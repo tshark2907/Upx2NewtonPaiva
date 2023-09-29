@@ -1,7 +1,7 @@
 class header_upx extends HTMLElement{
     constructor()/*Precisa ser chamado pra construir essa classe*/{
         super()/*Precisa ser chamado para extender corretamente ela pra outros arquivos*/;
-        const shadow = this.attachShadow({mode:"open"});/*Essa variavel permite amarrar uma sombra ao elemento, 
+        const shadow = this.attachShadow({mode:'open'});/*Essa variavel permite amarrar uma sombra ao elemento, 
         possibilitando o uso do shadow dom, o mode open permite que esse elemento seja referenciado
         e utilizado por javascript externo*/
         /*Abaixo, vou comecar a criar a estrutura do elemento e estilizar*/
