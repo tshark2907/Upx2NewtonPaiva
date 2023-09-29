@@ -10,6 +10,7 @@ class header_upx extends HTMLElement{
 
         const logo = document.createElement('img');
         logo.setAttribute('class', 'Logo_header_upx');
+        logo.setAttribute('alt','Logo')
 
         const sandwich = document.createElement('span');
         sandwich.setAttribute('class','Sandwich_header_upx2','material-symbols-outlined');
@@ -36,7 +37,7 @@ class header_upx extends HTMLElement{
 
         /*Depois de criados os elementos, é necessário colocá-los um dentro do outro*/
 
-        wrapper.appendChild(logo,sandwich,searchbar);/*Dessa forma, os elementos logo, sandwich e searchbar
+        wrapper.appendChild(logo,searchbar,sandwich);/*Dessa forma, os elementos logo, sandwich e searchbar
         são atribuidos a elementos filhos do elemento wrapper*/;
         searchbar.appendChild(searchIcon, searchField);
         searchField.appendChild(searchLabel);
@@ -44,11 +45,12 @@ class header_upx extends HTMLElement{
         let style = document.createElement('style');
         style.textContent = `
 
-        .Header_upx { 
+        .Header_upx {
+            margin: 0 auto; 
             width: 80%;
             height: 80px;
             display:flex;
-            align-items:middle;
+            align-items:center;
             justify-content:space-between;
             background-color:#1FF0C4;
         }
@@ -64,7 +66,7 @@ class header_upx extends HTMLElement{
             background-color:#ffffff;
             display:flex;
             justify-content: space-between;
-            align-items:middle;
+            align-items:center;
         }
         .SearchIcon_header_upx{
             width:45px;
@@ -75,6 +77,11 @@ class header_upx extends HTMLElement{
             font-family:'System-ui',sans-serif;
             font-size:1.2rem;
             background-color: #97C0FC;
+        }
+        .Sandwich_header_upx{
+            width:50px;
+            height:50px;
+            background-color:red;
         }
         `
         shadow.appendChild(style);
