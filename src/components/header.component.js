@@ -1,7 +1,7 @@
 class header_upx extends HTMLElement{
     constructor()/*Precisa ser chamado pra construir essa classe*/{
         super()/*Precisa ser chamado para extender corretamente ela pra outros arquivos*/;
-        const shadow = this.attachShadow({mode:"open"});/*Essa variavel permite amarrar uma sombra ao elemento, 
+        const shadow = this.attachShadow({mode:'open'});/*Essa variavel permite amarrar uma sombra ao elemento, 
         possibilitando o uso do shadow dom, o mode open permite que esse elemento seja referenciado
         e utilizado por javascript externo*/
         /*Abaixo, vou comecar a criar a estrutura do elemento e estilizar*/
@@ -27,7 +27,7 @@ class header_upx extends HTMLElement{
 
         const searchField = document.createElement('textarea');
         searchField.setAttribute('class','searchField');
-        searchField.setAttribute("id","SearchField_header_upx");
+        searchField.setAttribute('id','SearchField_header_upx');
         searchField.setAttribute('name','searchText');
 
         const searchLabel = document.createElement('label');
@@ -37,9 +37,12 @@ class header_upx extends HTMLElement{
 
         /*Depois de criados os elementos, é necessário colocá-los um dentro do outro*/
 
-        wrapper.appendChild(logo,searchbar,sandwich);/*Dessa forma, os elementos logo, sandwich e searchbar
+        wrapper.appendChild(logo);
+        wrapper.appendChild(searchbar);
+        wrapper.appendChild(sandwich);/*Dessa/*Dessa/*Dessa forma, os elementos logo, sandwich e searchbar
         são atribuidos a elementos filhos do elemento wrapper*/;
-        searchbar.appendChild(searchIcon, searchField);
+        searchbar.appendChild(searchIcon);
+        searchbar.appendChild(searchField);
         searchField.appendChild(searchLabel);
 
         let style = document.createElement('style');
