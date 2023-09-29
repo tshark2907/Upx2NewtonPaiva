@@ -5,6 +5,10 @@ class header_upx extends HTMLElement{
         possibilitando o uso do shadow dom, o mode open permite que esse elemento seja referenciado
         e utilizado por javascript externo*/
         /*Abaixo, vou comecar a criar a estrutura do elemento e estilizar*/
+        const googleImport = document.createElement('link');
+        googleImport.setAttribute('rel','stylesheet');
+        googleImport.setAttribute('href', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
         const wrapper = document.createElement('header');
         wrapper.setAttribute('class', 'Header_upx');
 
@@ -13,7 +17,7 @@ class header_upx extends HTMLElement{
         logo.setAttribute('alt','Logo')
 
         const sandwich = document.createElement('span');
-        sandwich.setAttribute('class','Sandwich_header_upx2','material-symbols-outlined');
+        sandwich.setAttribute('class','Sandwich_header_upx material-symbols-outlined');
         sandwich.textContent = 'menu';
         /*Este elemento é do google icons, vou importar no index.html e utilizar 
         a segunda classe e o conteudo de texto pra atribuir o icone correto*/
@@ -22,30 +26,38 @@ class header_upx extends HTMLElement{
         searchbar.setAttribute('class','SearchBar_header_upx');
 
         const searchIcon = document.createElement('span');
-        searchIcon.setAttribute('class', 'SearchIcon_header_upx', 'material-symbols-outlined');
+        searchIcon.setAttribute('class', 'SearchIcon_header_upx material-symbols-outlined');
         searchIcon.textContent = 'search';
 
-        const searchField = document.createElement('textarea');
-        searchField.setAttribute('class','searchField');
-        searchField.setAttribute("id","SearchField_header_upx");
+        const searchForm = document.createElement('form');
+        searchForm.setAttribute('action','');
+
+        const searchField = document.createElement('input');
+        searchField.setAttribute('class','SearchField_header_upx');
+        searchField.setAttribute('type','text');
         searchField.setAttribute('name','searchText');
 
         const searchLabel = document.createElement('label');
-        searchLabel.setAttribute('for', 'searchField');
+        searchLabel.setAttribute('for', 'searchText');
         searchField.textContent = 'Pesquise por algum item';
 
 
         /*Depois de criados os elementos, é necessário colocá-los um dentro do outro*/
 
-        wrapper.appendChild(logo,searchbar,sandwich);/*Dessa forma, os elementos logo, sandwich e searchbar
+        wrapper.appendChild(logo);
+        wrapper.appendChild(searchbar);
+        wrapper.appendChild(sandwich);/*Dessa forma, os elementos logo, sandwich e searchbar
         são atribuidos a elementos filhos do elemento wrapper*/;
-        searchbar.appendChild(searchIcon, searchField);
+        searchbar.appendChild(searchIcon);
+        searchbar.appendChild(searchField);
+        searchbar.appendChild(searchForm);
         searchField.appendChild(searchLabel);
 
         let style = document.createElement('style');
         style.textContent = `
 
         .Header_upx {
+            padding:15px;
             margin: 0 auto; 
             width: 80%;
             height: 80px;
@@ -58,7 +70,6 @@ class header_upx extends HTMLElement{
             width:60px;
             height:60px;
             background-color:#ffffff;
-            background-image: url("/assets");
         }
         .SearchBar_header_upx{
             width: 200px;
@@ -72,18 +83,35 @@ class header_upx extends HTMLElement{
             width:45px;
             height:45px;
             color:grey;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            cursor:pointer;
         }
         .SearchField_header_upx{
+            width:70%;
+            height:70%;
             font-family:'System-ui',sans-serif;
             font-size:1.2rem;
-            background-color: #97C0FC;
+            background-color: #CFD4DB;
+            border-radius:5px;
         }
         .Sandwich_header_upx{
-            width:50px;
-            height:50px;
-            background-color:red;
+            transform:scale(1.2);
+            width:40px;
+            height:40px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            cursor:pointer;
+            transition:all 0.5s ease-in-out;
+        }
+        .Sandwich_header_upx:hover{
+            background-color:black;
+            color:#CFD4DB;
         }
         `
+        shadow.appendChild(googleImport)
         shadow.appendChild(style);
         shadow.appendChild(wrapper);
         }
