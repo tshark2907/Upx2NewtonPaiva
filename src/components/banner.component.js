@@ -9,19 +9,26 @@ class banner_upx extends HTMLElement {
         const dots_holder = document.createElement('div');
         dots_holder.setAttribute('class', 'Dots_holder_upx');
 
-        const dots = [
-            document.createElement('div'),
-            document.createElement('div'),
-            document.createElement('div'),
-            document.createElement('div'),
-            document.createElement('div')
-        ];
+        const dots = [];
 
         let dotIndex = 0;
 
-        for (let dot of dots) {
+        for (let i = 0; i < 5; i++) {
+            const dot = document.createElement('div');
+            dots.push(dot);
             dot.setAttribute('class', `Dot ${dotIndex}`);
+            dot.addEventListener('click', () => {
+                handleClick(dot)
+            });
             dotIndex++;
+        }
+
+        dots.forEach(element => {
+            dots_holder.appendChild(element);
+        })
+
+        function handleClick(clickedDot){
+            console.log(clickedDot.classList)
         }
 
         const banner = document.createElement('div');
@@ -146,43 +153,6 @@ class banner_upx extends HTMLElement {
         banner.appendChild(dots_holder);
         banner.appendChild(banner_expositor);
         banner_expositor.appendChild(banner_images_holder);
-
-        dots.forEach(element => {
-            dots_holder.appendChild(element);
-            element.addEventListener('click', () => {
-                for(let dot of dots){
-                    dot.classList.remove('Highlighted_dot')
-                }
-                const elementIndex = dots.indexOf(element);
-                switch (elementIndex) {
-                    case 0: {
-                        banner_controler = -200;
-                        highlightDot();
-                        break;
-                    }
-                    case 1: {
-                        banner_controler = -100;
-                        highlightDot();
-                        break;
-                    }
-                    case 2: {
-                        banner_controler = 0;
-                        highlightDot();
-                        break;
-                    }
-                    case 3: {
-                        banner_controler = 100;
-                        highlightDot();
-                        break;
-                    }
-                    case 4: {
-                        banner_controler = 200;
-                        highlightDot();
-                        break;
-                    }
-                }
-            })
-        });
 
         banner_images.forEach(element => {
             banner_images_holder.appendChild(element);

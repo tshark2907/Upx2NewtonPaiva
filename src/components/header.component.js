@@ -59,7 +59,7 @@ class header_upx extends HTMLElement{
         .Header_upx {
             padding:15px;
             margin: 0 auto; 
-            width: 80%;
+            width: 100%;
             height: 80px;
             display:flex;
             align-items:center;
